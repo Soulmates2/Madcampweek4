@@ -45,8 +45,21 @@ ModelImporter:
     4300010: Contr
     4300012: tire_back_R
     4300014: tire_back_L
+    6400000: Car
+    6400002: Contr
+    6400004: suspensao_tras
+    6400006: suspesao_F
+    6400008: tire_back_L
+    6400010: tire_back_R
+    6400012: tire_front_L
+    6400014: tire_Front_R
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: 3c97e352e40fa3741ab5137a5aeb8848, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -79,7 +92,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 0
     importBlendShapes: 1
@@ -99,7 +112,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 0
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 1

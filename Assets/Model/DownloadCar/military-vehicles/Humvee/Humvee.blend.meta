@@ -41,6 +41,13 @@ ModelImporter:
     4300008: Left_Wheel_2
     4300010: Right_Wheel_1
     4300012: Right_Wheel_2
+    6400000: //RootNode
+    6400002: Left_Wheel_1
+    6400004: Left_Wheel_2
+    6400006: Machine_Gun
+    6400008: Machine_Gun_Mesh
+    6400010: Right_Wheel_1
+    6400012: Right_Wheel_2
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}

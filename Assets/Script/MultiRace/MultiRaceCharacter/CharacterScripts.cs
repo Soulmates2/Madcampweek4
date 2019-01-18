@@ -87,7 +87,10 @@ public class CharacterScripts : NetworkBehaviour
     [Command]
     void CmdMakeUserCar()
     {
-        var go = (GameObject)Instantiate(Car[0], new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
+        GameObject[] StartPositionObject = GameObject.FindGameObjectsWithTag("StartPosition");
+        
+        var go = (GameObject)Instantiate(Car[0], StartPositionObject[0].transform.position, Quaternion.Euler(0, 0, 0));
+        go.transform.SetParent(transform);
         NetworkServer.SpawnWithClientAuthority(go, connectionToClient);
     }
 

@@ -18,6 +18,8 @@ public class CharacterScripts : NetworkBehaviour
     public GameObject[] Car;
     public GameObject[] Field;
 
+    private bool is_map_created = false;
+
     public bool isReady = false;
     // Start is called before the first frame update
     void Start()
@@ -62,8 +64,9 @@ public class CharacterScripts : NetworkBehaviour
         FindObjectOfType<CheckPlayerAndReady>().ReadyPlayer++;
         if (FindObjectOfType<CheckPlayerAndReady>().NowPlayer <= FindObjectOfType<CheckPlayerAndReady>().ReadyPlayer)
         {
-            if (netId.Value == 2)
+            if (!is_map_created)
             {
+                is_map_created = true;
                 NetworkServer.Spawn(Instantiate(Field[0], new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0)));
             }
             RpcStartGame();
@@ -88,7 +91,8 @@ public class CharacterScripts : NetworkBehaviour
     void CmdMakeUserCar()
     {
         GameObject[] StartPositionObject = GameObject.FindGameObjectsWithTag("StartPosition");
-        var go = (GameObject)Instantiate(Car[2], StartPositionObject[0].transform.position, Quaternion.Euler(0, 0, 0));
+        Debug.Log(StartPositionObject.Length);
+        var go = (GameObject)Instantiate(Car[2], StartPositionObject[netId.Value - 2].transform.position , Quaternion.Euler(0, 0, 0));
         go.transform.SetParent(transform);
         NetworkServer.SpawnWithClientAuthority(go, connectionToClient);
     }

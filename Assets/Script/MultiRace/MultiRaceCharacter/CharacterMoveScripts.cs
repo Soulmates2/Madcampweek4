@@ -7,7 +7,7 @@ public class CharacterMoveScripts : NetworkBehaviour
 {
     public Camera PlayerCamera;
     public Vector3 speed;
-    float aaaa;
+    float Accel;
     public Rigidbody PlayerRigidBody;
     // Start is called before the first frame update
     void Start()
@@ -31,48 +31,62 @@ public class CharacterMoveScripts : NetworkBehaviour
         {
             if (Input.GetKey(KeyCode.LeftArrow))
             {
-                transform.Rotate(new Vector3(0, -Time.deltaTime * 80.0f, 0));
+                transform.Rotate(new Vector3(0, -Time.deltaTime * 80.0f, 0) * Accel);
             }
 
 
             if (Input.GetKey(KeyCode.RightArrow))
             {
-                transform.Rotate(new Vector3(0, Time.deltaTime * 80.0f, 0));
+                transform.Rotate(new Vector3(0, Time.deltaTime * 80.0f, 0) * Accel);
             }
 
 
             if (Input.GetKey(KeyCode.UpArrow))
             {
-                Debug.Log("aaaa");
-                if (aaaa <= 0.5f)
+                if (Accel <= 0.5f)
                 {
-                    Debug.Log("aaaa");
-                    aaaa += 0.003f;
-                    transform.position += (transform.forward) * aaaa;
+                    Accel += 0.003f;
+                    transform.position += (transform.forward) * Accel;
                     //speed += new Vector3(0, 0, 0.1f);
                     //PlayerRigidBody.velocity = speed;
                     //PlayerRigidBody.AddForce(0, 0, 80f * Time.deltaTime);
                     //transform.GetComponent<Rigidbody>().AddForce(0,0, 80f * Time.deltaTime);
-                    Debug.Log("aaaa");
                 }
                 else
                 {
-                    transform.position += (transform.forward) * aaaa;
+                    transform.position += (transform.forward) * Accel;
                 }
             }
             else
             {
-                if (aaaa > 0)
+                if (Accel > 0)
                 {
-                    aaaa -= 0.003f;
-                    transform.position += (transform.forward) * aaaa;
+                    Accel -= 0.003f;
+                    transform.position += (transform.forward) * Accel;
                 }
             }
 
 
             if (Input.GetKey(KeyCode.DownArrow))
             {
-                transform.position -= (transform.forward) * 0.25f;
+                if(Accel > 0f)
+                {
+                    Accel -= 0.001f;
+                    
+                }
+                else if (Accel < 0f && Accel >= -0.3f)
+                {
+                    Accel -= 0.001f;
+                    transform.position += (transform.forward) * Accel;
+                }                    
+            }
+            else
+            {
+                if (Accel < 0)
+                {
+                    Accel += 0.001f;
+                    transform.position += (transform.forward) * Accel;
+                }
             }
 
 

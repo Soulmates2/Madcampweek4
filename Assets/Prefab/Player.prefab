@@ -960,6 +960,7 @@ MonoBehaviour:
   Car:
   - {fileID: 8638515393781062895, guid: 314365baa83d85e4986b30e1c93be525, type: 3}
   - {fileID: 5895969802538023517, guid: 30edd696e1fa39c419f27c2f017bbdb3, type: 3}
+  - {fileID: 2960947655329379802, guid: 826e3f527a60c834da907b3ae3ebc284, type: 3}
   Field:
   - {fileID: 2765502339389010278, guid: 07420e2978baac9478a9eac62824b6f7, type: 3}
   isReady: 0

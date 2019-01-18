@@ -126,6 +126,26 @@ ModelImporter:
     4300034: Machine_Gun
     4300036: Gun
     4300038: Turret
+    6400000: Gun
+    6400002: Left_Wheel_1
+    6400004: Left_Wheel_2
+    6400006: Left_Wheel_3
+    6400008: Left_Wheel_4
+    6400010: Machine_Gun
+    6400012: Right_Wheel_1
+    6400014: Right_Wheel_2
+    6400016: Right_Wheel_3
+    6400018: Right_Wheel_4
+    6400020: //RootNode
+    6400022: Suspension_Left_Wheel_1
+    6400024: Suspension_Left_Wheel_2
+    6400026: Suspension_Left_Wheel_3
+    6400028: Suspension_Left_Wheel_4
+    6400030: Suspension_Right_Wheel_1
+    6400032: Suspension_Right_Wheel_2
+    6400034: Suspension_Right_Wheel_3
+    6400036: Suspension_Right_Wheel_4
+    6400038: Turret
     7400000: Take 001
     9500000: //RootNode
   externalObjects: {}

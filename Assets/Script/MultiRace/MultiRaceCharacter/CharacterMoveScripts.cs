@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
+
+[NetworkSettings(sendInterval = 0.016f)]
 public class CharacterMoveScripts : NetworkBehaviour
 {
     public Camera PlayerCamera;
     public Vector3 speed;
     float Accel;
     public Rigidbody PlayerRigidBody;
+
     // Start is called before the first frame update
+
     void Start()
     {
         RpcCameraOff();
@@ -25,7 +29,7 @@ public class CharacterMoveScripts : NetworkBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         if (hasAuthority)
         {
@@ -33,7 +37,6 @@ public class CharacterMoveScripts : NetworkBehaviour
             {
                 transform.Rotate(new Vector3(0, -Time.deltaTime * 80.0f, 0) * Accel);
             }
-
 
             if (Input.GetKey(KeyCode.RightArrow))
             {
@@ -89,15 +92,6 @@ public class CharacterMoveScripts : NetworkBehaviour
                 }
             }
 
-
-            if (Input.GetKey(KeyCode.W))
-            {
-                transform.position += (transform.up) * 0.5f;
-            }
-            if (Input.GetKey(KeyCode.S))
-            {
-                transform.position -= (transform.up) * 0.5f;
-            }
         }
     }
 }

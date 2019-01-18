@@ -647,78 +647,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 634315610}
   m_CullTransparentMesh: 0
---- !u!1 &786466229
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 786466230}
-  - component: {fileID: 786466232}
-  - component: {fileID: 786466231}
-  m_Layer: 5
-  m_Name: Title
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &786466230
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 786466229}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1367180110}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -609, y: 441}
-  m_SizeDelta: {x: 680, y: 180}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &786466231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 786466229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: e1d9e07f8246ea7458c1fc86e1190d35, type: 3}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
---- !u!222 &786466232
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 786466229}
-  m_CullTransparentMesh: 0
 --- !u!1 &1009364364
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,11 +930,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1367180110}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 848, y: 481}
+  m_AnchoredPosition: {x: 848, y: 420}
   m_SizeDelta: {x: 180, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1156242504
@@ -1253,15 +1181,14 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 786466230}
   - {fileID: 1156242503}
   m_Father: {fileID: 1009364369}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_AnchoredPosition: {x: -58.6, y: 36.8}
+  m_SizeDelta: {x: 2037.3, y: 1153.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1367180111
 MonoBehaviour:
@@ -1295,7 +1222,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: e7720f789fd0e63489485209e7716665, type: 3}
+  m_Texture: {fileID: 2800000, guid: ec706e9828aaae149a914a41738b0449, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -1902,10 +1829,11 @@ MonoBehaviour:
   m_OfflineScene: MultiRaceMenu
   m_OnlineScene: MultiRaceLobby
   m_SpawnPrefabs:
-  - {fileID: 8638515393781062895, guid: 314365baa83d85e4986b30e1c93be525, type: 3}
-  - {fileID: 5895969802538023517, guid: 30edd696e1fa39c419f27c2f017bbdb3, type: 3}
   - {fileID: 2765502339389010278, guid: 07420e2978baac9478a9eac62824b6f7, type: 3}
-  - {fileID: 2960947655329379802, guid: 826e3f527a60c834da907b3ae3ebc284, type: 3}
+  - {fileID: 7148369445981208588, guid: c619e03b8294fe04c8f2bcbb7c0cae7a, type: 3}
+  - {fileID: 1630295859, guid: 6021f8ce7292308438b1356c9ae69be8, type: 3}
+  - {fileID: 1301703081901874302, guid: 31df7b08bd9719f498dccab365c31d9e, type: 3}
+  - {fileID: 6756365901341040121, guid: 5cd2e0822d0bf7c4895948a6343733cc, type: 3}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:

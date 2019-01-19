@@ -7,6 +7,7 @@ using UnityEngine.Networking;
 
 public class CheckPlayerAndReady : NetworkBehaviour 
 {
+    /*
     public int NowPlayer;
     public int ReadyPlayer;
     static public bool is_game_start = false;
@@ -48,7 +49,7 @@ public class CheckPlayerAndReady : NetworkBehaviour
         }
     }
 
-
+    */
 
 
 }

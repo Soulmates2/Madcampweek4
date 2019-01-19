@@ -67,6 +67,5 @@ public class CircuitManagerScripts : MonoBehaviour
     {
         SceneManager.LoadScene("CircuitRacePlay");
     }
-
-
+    
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.Networking.NetworkSystem;
 using UnityEngine.UI;
 
 
@@ -17,33 +18,48 @@ public class CharacterScripts : NetworkBehaviour
     public GameObject InGameUI;
 
     public GameObject[] Car;
-    public GameObject[] Field;
 
     public Sprite[] CarImage;
     public Sprite[] FieldImage;
 
     public int MyCar = 0;
-    public int OurField = 0;
 
     public Image CarImageField;
     public Image FieldImageField;
 
-    public bool is_game_start = false;
-    public bool is_map_created = false;
+
     public bool isReady = false;
-    
+
+    public delegate void TakeStartGame();
+
+    [SyncEvent]
+    public event TakeStartGame EventStartGame;
+
     // Start is called before the first frame update
     void Start()
     {
         LobbyUI.gameObject.SetActive(false);
         InGameUI.gameObject.SetActive(false);
+        if (NetworkClient.active)
+        {
+            this.EventStartGame += StartGame;
+        }
         if (isLocalPlayer)
         {
             CmdAddNowUser();
             LobbyUI.gameObject.SetActive(true);
         }
     }
-    
+
+    private void Update()
+    {
+        if (isServer && CheckPlayerAndReady.is_game_start)
+        {
+            CheckPlayerAndReady.is_game_start = false;
+            //EventStartGame();
+        }
+    }
+
     public void OnClickReadyOrCancel()
     {
         CmdOnClickReadyOrCancel();
@@ -69,8 +85,18 @@ public class CharacterScripts : NetworkBehaviour
         CarImageField.sprite = CarImage[MyCar];
     }
 
+    public void StartGame()
+    {
+        if (isLocalPlayer)
+        {
+            CmdMakeUserCar(MyCar);
+            LobbyUI.gameObject.SetActive(false);
+            InGameUI.gameObject.SetActive(true);
+        }
+    }
+
     [Command]
-    void CmdOnClickReadyOrCancel()
+    public void CmdOnClickReadyOrCancel()
     {
         if (isReady)
         {
@@ -82,26 +108,13 @@ public class CharacterScripts : NetworkBehaviour
         {
             FindObjectOfType<CheckPlayerAndReady>().ReadyPlayer++;
             isReady = true;
-            if (FindObjectOfType<CheckPlayerAndReady>().NowPlayer <= FindObjectOfType<CheckPlayerAndReady>().ReadyPlayer)
-            {
-                if ((is_map_created == false) && (is_game_start == false))
-                {
-                    RpcStartGame();
-                    is_map_created = true;
-                    is_game_start = true;
-                    NetworkServer.Spawn(Instantiate(Field[OurField], new Vector3(-100, -100, -100), Quaternion.Euler(0, 0, 0)));
-                }
-                else
-                {
-                    RpcChangeSpriteCancel();
-                }
-            }
-            
+            RpcChangeSpriteCancel();
+            FindObjectOfType<CheckPlayerAndReady>().StartGame();
         }
         RpcUpdateTextField(FindObjectOfType<CheckPlayerAndReady>().NowPlayer, FindObjectOfType<CheckPlayerAndReady>().ReadyPlayer);
     }
     [Command]
-    void CmdMakeUserCar(int MyCar)
+    public void CmdMakeUserCar(int MyCar)
     {
         GameObject[] StartPositionObject = GameObject.FindGameObjectsWithTag("StartPosition");
         Debug.Log(StartPositionObject.Length);
@@ -130,14 +143,15 @@ public class CharacterScripts : NetworkBehaviour
         }
     }
     [Command]
-    void CmdAddNowUser()
+    public void CmdAddNowUser()
     {
         FindObjectOfType<CheckPlayerAndReady>().NowPlayer++;
         RpcUpdateTextField(FindObjectOfType<CheckPlayerAndReady>().NowPlayer, FindObjectOfType<CheckPlayerAndReady>().ReadyPlayer);
     }
 
+    /*
     [ClientRpc]
-    void RpcStartGame()
+    public void RpcStartGame()
     {
         if (isLocalPlayer)
         {
@@ -146,17 +160,22 @@ public class CharacterScripts : NetworkBehaviour
             InGameUI.gameObject.SetActive(true);
         }
     }
+    */
     [ClientRpc]
-    void RpcUpdateTextField(int NowPlayer, int ReadyPlayer)
+    public void RpcUpdateTextField(int NowPlayer, int ReadyPlayer)
     {
         if (isLocalPlayer)
         {
             NowPlayerText.text = "Now Player : " + NowPlayer.ToString();
             ReadyPlayerText.text = "Ready Player : " + ReadyPlayer.ToString();
+            if(NowPlayer == ReadyPlayer)
+            {
+                StartGame();
+            }
         }
     }
     [ClientRpc]
-    void RpcChangeSpriteCancel()
+    public void RpcChangeSpriteCancel()
     {
         if (isLocalPlayer)
         {
@@ -164,12 +183,13 @@ public class CharacterScripts : NetworkBehaviour
         }
     }
     [ClientRpc]
-    void RpcChangeSpriteReady()
+    public void RpcChangeSpriteReady()
     {
         if (isLocalPlayer)
         {
             ReadyOrCancel.sprite = Ready;
         }
     }
+
 
 }

@@ -7,6 +7,7 @@ TagManager:
   - StartPosition
   - CircuitRaceManager
   - PlayerCamera
+  - CupRaceManager
   layers:
   - Default
   - TransparentFX

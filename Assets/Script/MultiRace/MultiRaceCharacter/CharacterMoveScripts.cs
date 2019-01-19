@@ -33,65 +33,69 @@ public class CharacterMoveScripts : NetworkBehaviour
     {
         if (hasAuthority)
         {
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                transform.Rotate(new Vector3(0, -Time.deltaTime * 80.0f, 0) * Accel);
-            }
+           CharacterMove();
+        }
+    }
 
-            if (Input.GetKey(KeyCode.RightArrow))
-            {
-                transform.Rotate(new Vector3(0, Time.deltaTime * 80.0f, 0) * Accel);
-            }
+    void CharacterMove()
+    {
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.Rotate(new Vector3(0, -Time.deltaTime * 80.0f, 0) * Accel);
+        }
 
-
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                if (Accel <= 0.5f)
-                {
-                    Accel += 0.003f;
-                    transform.position += (transform.forward) * Accel;
-                    //speed += new Vector3(0, 0, 0.1f);
-                    //PlayerRigidBody.velocity = speed;
-                    //PlayerRigidBody.AddForce(0, 0, 80f * Time.deltaTime);
-                    //transform.GetComponent<Rigidbody>().AddForce(0,0, 80f * Time.deltaTime);
-                }
-                else
-                {
-                    transform.position += (transform.forward) * Accel;
-                }
-            }
-            else
-            {
-                if (Accel > 0)
-                {
-                    Accel -= 0.003f;
-                    transform.position += (transform.forward) * Accel;
-                }
-            }
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.Rotate(new Vector3(0, Time.deltaTime * 80.0f, 0) * Accel);
+        }
 
 
-            if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            if (Accel <= 0.5f)
             {
-                if(Accel > 0f)
-                {
-                    Accel -= 0.001f;
-                    
-                }
-                else if (Accel < 0f && Accel >= -0.3f)
-                {
-                    Accel -= 0.001f;
-                    transform.position += (transform.forward) * Accel;
-                }                    
+                Accel += 0.003f;
+                transform.position += (transform.forward) * Accel;
+                //speed += new Vector3(0, 0, 0.1f);
+                //PlayerRigidBody.velocity = speed;
+                //PlayerRigidBody.AddForce(0, 0, 80f * Time.deltaTime);
+                //transform.GetComponent<Rigidbody>().AddForce(0,0, 80f * Time.deltaTime);
             }
             else
             {
-                if (Accel < 0)
-                {
-                    Accel += 0.001f;
-                    transform.position += (transform.forward) * Accel;
-                }
+                transform.position += (transform.forward) * Accel;
             }
+        }
+        else
+        {
+            if (Accel > 0)
+            {
+                Accel -= 0.003f;
+                transform.position += (transform.forward) * Accel;
+            }
+        }
 
+
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            if (Accel > 0f)
+            {
+                Accel -= 0.001f;
+
+            }
+            else if (Accel < 0f && Accel >= -0.3f)
+            {
+                Accel -= 0.001f;
+                transform.position += (transform.forward) * Accel;
+            }
+        }
+        else
+        {
+            if (Accel < 0)
+            {
+                Accel += 0.001f;
+                transform.position += (transform.forward) * Accel;
+            }
         }
     }
 }

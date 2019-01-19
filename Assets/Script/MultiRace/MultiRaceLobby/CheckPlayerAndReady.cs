@@ -39,12 +39,11 @@ public class CheckPlayerAndReady : NetworkBehaviour
     {
         if (FindObjectOfType<CheckPlayerAndReady>().NowPlayer <= FindObjectOfType<CheckPlayerAndReady>().ReadyPlayer)
         {
-            if ((is_map_created == false) && (is_game_start == false) && (ReadyPlayer > 1))
+            if ((is_map_created == false) && (is_game_start == false) && (ReadyPlayer > 0))
             {
                 is_map_created = true;
                 is_game_start = true;
                 NetworkServer.Spawn(Instantiate(Field[OurField], new Vector3(-100, -100, -100), Quaternion.Euler(0, 0, 0)));
-                
             }
         }
     }

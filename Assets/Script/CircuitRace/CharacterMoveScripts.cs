@@ -105,7 +105,19 @@ public class CharacterMoveScripts : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<TypeScript>() != null)
         {
-            if (collision.gameObject.GetComponent<TypeScript>().GetTypeScript().Equals("item"))
+            if (collision.gameObject.GetComponent<TypeScript>().GetTypeScript().Equals("Blue Item"))
+            {    
+                Destroy(collision.gameObject);
+            }
+            if (collision.gameObject.GetComponent<TypeScript>().GetTypeScript().Equals("Red Item"))
+            {
+                Destroy(collision.gameObject);
+            }
+            if (collision.gameObject.GetComponent<TypeScript>().GetTypeScript().Equals("Yellow Item"))
+            {
+                Destroy(collision.gameObject);
+            }
+            if (collision.gameObject.GetComponent<TypeScript>().GetTypeScript().Equals("Green Item"))
             {    
                 Destroy(collision.gameObject);
             }

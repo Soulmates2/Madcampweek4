@@ -10,6 +10,7 @@ public class CircuitRaceManagerScripts : MonoBehaviour
 
     private GameObject Player;
     private GameObject[] AI;
+    public GameObject[] Items;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class CircuitRaceManagerScripts : MonoBehaviour
         Player = Instantiate(Car[CircuitRaceManager.CarKind], StartPositionObject[0].transform.position, Quaternion.Euler(0, 0, 0));
         
         Player.GetComponentInChildren<CharacterMoveScripts>().Is_MyCharacter = true;
+        Instantiate(Items[Random.Range(0, Items.Length)], StartPositionObject[0].transform.position + Vector3.forward * 5, Quaternion.Euler(0, 0, 0));
 
         AI = new GameObject[7];
         for(int i = 0; i < 7; i++)

@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class CharacterMoveScripts : MonoBehaviour
 {
-    public Camera PlayerCamera;
     public Vector3 speed;
     float Accel;
     public Rigidbody PlayerRigidBody;
+    public bool Is_MyCharacter = false;
 
     // Start is called before the first frame update
 
@@ -20,7 +20,10 @@ public class CharacterMoveScripts : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-         CharacterMove();
+        if (Is_MyCharacter)
+        {
+            CharacterMove();
+        }
     }
 
     void CharacterMove()

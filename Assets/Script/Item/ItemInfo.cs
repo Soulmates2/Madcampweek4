@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
-public class ItemInfo : NetworkBehaviour
+public class ItemInfo : MonoBehaviour
 {
     public TypeScript type;
     public GameObject item;

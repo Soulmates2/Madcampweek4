@@ -702,3 +702,9 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1403124619}
   m_CullTransparentMesh: 0
+=======
+  Items:
+  - {fileID: 3919217235753298928, guid: 716e6e47e58286a46a245732aba0559d, type: 3}
+  - {fileID: 1442841858022240396, guid: 4b7e6a88f93511e4f909b1914f905671, type: 3}
+  - {fileID: 130284367550013003, guid: 80d3fe1c762792442af14f8704f89200, type: 3}
+  - {fileID: 3013634128896760751, guid: ec6a51c66f02ea04584402ac23c867f4, type: 3}

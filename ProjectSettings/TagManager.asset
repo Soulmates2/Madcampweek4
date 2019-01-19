@@ -4,9 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - LobbyManager
   - StartPosition
-  - GameUI
+  - CircuitRaceManager
+  - PlayerCamera
   layers:
   - Default
   - TransparentFX

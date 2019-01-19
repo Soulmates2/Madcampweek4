@@ -41,12 +41,22 @@ public class CharacterMoveScripts : NetworkBehaviour
     {
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            transform.Rotate(new Vector3(0, -Time.deltaTime * 80.0f, 0) * Accel);
+            if (Accel < 0.1f && Accel > -0.1f)
+            {
+                transform.Rotate(new Vector3(0, -Time.deltaTime * 320.0f, 0) * Accel);
+            }
+            else
+                transform.Rotate(new Vector3(0, -Time.deltaTime * 160.0f, 0) * Accel);
         }
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            transform.Rotate(new Vector3(0, Time.deltaTime * 80.0f, 0) * Accel);
+            if (Accel < 0.1f && Accel > -0.1f)
+            {
+                transform.Rotate(new Vector3(0, Time.deltaTime * 320.0f, 0) * Accel);
+            }
+            else
+                transform.Rotate(new Vector3(0, Time.deltaTime * 160.0f, 0) * Accel);
         }
 
 
@@ -86,6 +96,10 @@ public class CharacterMoveScripts : NetworkBehaviour
             else if (Accel < 0f && Accel >= -0.3f)
             {
                 Accel -= 0.001f;
+                transform.position += (transform.forward) * Accel;
+            }
+            else
+            {
                 transform.position += (transform.forward) * Accel;
             }
         }

@@ -43,7 +43,12 @@ ModelImporter:
     4300008: Right_Wheel_1
     4300010: Right_Wheel_2
     4300012: Left_Wheel_2
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Humvee_Material
+    second: {fileID: 2100000, guid: 0cfd4a54eacc04649981812ef7d723f9, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

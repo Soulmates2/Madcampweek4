@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class OptionScript : MonoBehaviour
 {
     public Slider backVolume;
-    private AudioSource audio;
+    public AudioSource audio;
 
     private float backVol = 0.1f;
     // Start is called before the first frame update

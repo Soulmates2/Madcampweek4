@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class MultiRaceLobby : NetworkManager
 {
+    /*
     [SerializeField]
     InputField ipInputField;
     [SerializeField]
@@ -110,5 +111,5 @@ public class MultiRaceLobby : NetworkManager
         base.OnStopClient();
         //  testLog.text += ("\n[Client]Client Stop.");
     }
-
+    */
 }

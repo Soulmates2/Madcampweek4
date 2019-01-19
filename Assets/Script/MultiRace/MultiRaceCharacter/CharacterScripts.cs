@@ -6,9 +6,9 @@ using UnityEngine.Networking.NetworkSystem;
 using UnityEngine.UI;
 
 
-[NetworkSettings(sendInterval = 0.016f)]
 public class CharacterScripts : NetworkBehaviour
 {
+    /*
     public Text NowPlayerText;
     public Text ReadyPlayerText;
     public Image ReadyOrCancel;
@@ -30,11 +30,12 @@ public class CharacterScripts : NetworkBehaviour
 
     public bool isReady = false;
 
-    public delegate void TakeStartGame();
+    //public delegate void TakeStartGame();
 
-    [SyncEvent]
-    public event TakeStartGame EventStartGame;
+    //[SyncEvent]
+   // public event TakeStartGame EventStartGame;
 
+    /*
     // Start is called before the first frame update
     void Start()
     {
@@ -161,6 +162,7 @@ public class CharacterScripts : NetworkBehaviour
         }
     }
     */
+    /*
     [ClientRpc]
     public void RpcUpdateTextField(int NowPlayer, int ReadyPlayer)
     {
@@ -190,6 +192,8 @@ public class CharacterScripts : NetworkBehaviour
             ReadyOrCancel.sprite = Ready;
         }
     }
+
+    */
 
 
 }

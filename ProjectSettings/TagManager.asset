@@ -8,6 +8,15 @@ TagManager:
   - CircuitRaceManager
   - PlayerCamera
   - CupRaceManager
+  - LobbyManager
+  - GameUI
+  - MinimapCamera
+  - NowLap
+  - CurrentLap
+  - CurrentLapTime
+  - LastLapTime
+  - BestLapTime
+  - Item
   layers:
   - Default
   - TransparentFX

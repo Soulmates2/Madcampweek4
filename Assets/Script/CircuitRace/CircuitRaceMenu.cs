@@ -19,6 +19,8 @@ public class CircuitRaceMenu : MonoBehaviour
 
     public void GoMainMenu()
     {
+        var CircuitRaceManager = GameObject.FindWithTag("CircuitRaceManager");
+        Destroy(CircuitRaceManager);
         SceneManager.LoadScene("MainMenu");
     }
 }

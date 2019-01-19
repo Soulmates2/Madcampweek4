@@ -33,7 +33,7 @@ public class CharacterMoveScripts : NetworkBehaviour
     {
         if (hasAuthority)
         {
-           CharacterMove();
+            CharacterMove();
         }
     }
 
@@ -88,7 +88,7 @@ public class CharacterMoveScripts : NetworkBehaviour
 
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            if (Accel > 0f)
+            if (Accel >= 0f)
             {
                 Accel -= 0.001f;
 
@@ -112,4 +112,19 @@ public class CharacterMoveScripts : NetworkBehaviour
             }
         }
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<TypeScript>() != null)
+        {
+            if (collision.gameObject.GetComponent<TypeScript>().GetTypeScript().Equals("item"))
+            {
+                
+                Destroy(collision.gameObject);
+                
+                
+            }
+        }
+
+    }
 }
+

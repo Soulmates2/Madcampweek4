@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CircuitRaceManagerScripts : MonoBehaviour
+public class SingleRaceManagerScripts : MonoBehaviour
 {
 
     public GameObject[] Map;
@@ -21,12 +21,12 @@ public class CircuitRaceManagerScripts : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var CircuitRaceManager = GameObject.FindWithTag("CircuitRaceManager").GetComponent<CircuitManagerScripts>();
-        Instantiate(Map[CircuitRaceManager.MapKind]);
+        var CupRaceManager = GameObject.FindWithTag("CupRaceManager").GetComponent<SingleCupChoice>();
+        Instantiate(Map[CupRaceManager.CupKind]);
 
         GameObject[] StartPositionObject = GameObject.FindGameObjectsWithTag("StartPosition");
-        Player = Instantiate(Car[CircuitRaceManager.CarKind], StartPositionObject[0].transform.position, Quaternion.Euler(0, 0, 0));
-        
+        Player = Instantiate(Car[CupRaceManager.CarKind], StartPositionObject[0].transform.position, Quaternion.Euler(0, 0, 0));
+
         Player.GetComponentInChildren<CharacterMoveScripts>().Is_MyCharacter = true;
         MyCarRigidBody = Player.GetComponentInChildren<Rigidbody>();
         Instantiate(Items[Random.Range(0, Items.Length)], StartPositionObject[0].transform.position + Vector3.forward * 5, Quaternion.Euler(0, 0, 0));
@@ -34,11 +34,11 @@ public class CircuitRaceManagerScripts : MonoBehaviour
         //Camera MinimapCamera = GameObject.FindGameObjectWithTag("MinimapCamera").GetComponent<Camera>();
 
         AI = new GameObject[7];
-        for(int i = 0; i < 7; i++)
+        for (int i = 0; i < 7; i++)
         {
             AI[i] = Instantiate(Car[Random.Range(0, Car.Length)], StartPositionObject[i].transform.position, Quaternion.Euler(0, 0, 0));
             Camera[] Cam = AI[i].GetComponentsInChildren<Camera>();
-            foreach(Camera c in Cam)
+            foreach (Camera c in Cam)
             {
                 c.enabled = false;
             }

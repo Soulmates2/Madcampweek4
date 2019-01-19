@@ -187,13 +187,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 389434503}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.005224817, y: -0, z: -0, w: 0.9999864}
   m_LocalPosition: {x: 0, y: 1, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.59900004, y: 0, z: 0}
 --- !u!1 &938899347
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,7 +309,7 @@ MonoBehaviour:
   Map:
   - {fileID: 2765502339389010278, guid: 07420e2978baac9478a9eac62824b6f7, type: 3}
   Car:
-  - {fileID: 2200365975863294276, guid: 55fa8bed48624b349803f2a984cbc1a6, type: 3}
+  - {fileID: 1703063540450730776, guid: d0d6c5d53e0b1b646a80f86dc107c454, type: 3}
   - {fileID: 7941915239027748854, guid: 6021f8ce7292308438b1356c9ae69be8, type: 3}
-  - {fileID: 7617998902268325294, guid: 31df7b08bd9719f498dccab365c31d9e, type: 3}
-  - {fileID: 2863692834331293360, guid: a8ae0e6e0b3891a4d91d7a13dfec1f54, type: 3}
+  - {fileID: 3692967034896483938, guid: 940fd2fb3caf7dd4a98c3b2b62b08bbf, type: 3}
+  - {fileID: 8389153992117827875, guid: 8f931a5b5fee9474aa1fe40857cd22e1, type: 3}

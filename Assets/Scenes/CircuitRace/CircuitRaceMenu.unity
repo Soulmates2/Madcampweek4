@@ -163,10 +163,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 64168a7973d90a2429cd42eb8d0ef9d6, type: 3}
   - {fileID: 21300000, guid: 41ca987c3286fbb4cb09f03a532fad6a, type: 3}
   MapImageSet:
-  - {fileID: 21300000, guid: 5640ce3d632c3424f9b9ea1c77b10498, type: 3}
-  - {fileID: 21300000, guid: 45ce78dcc25f9f74199599235afb1190, type: 3}
-  - {fileID: 21300000, guid: d54f45def7a00db4191ccd44fd216bc1, type: 3}
-  - {fileID: 21300000, guid: 6c92435c61fc06941924f30e44646a5c, type: 3}
+  - {fileID: 21300000, guid: a8eda277eec2fee4ba29f2cc44bae6ec, type: 3}
   CarKind: 0
   MapKind: 0
 --- !u!1 &160574499

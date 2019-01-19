@@ -22,7 +22,7 @@ public class SingleCupChoice : MonoBehaviour
         CupImage.sprite = CupImageSet[CupKind];
     }
 
-    public void OnClickMapLeft()
+    public void OnClickCupLeft()
     {
         CupKind--;
         if (CupKind < 0)
@@ -32,7 +32,7 @@ public class SingleCupChoice : MonoBehaviour
         CupImage.sprite = CupImageSet[CupKind];
     }
 
-    public void OnClickMapRight()
+    public void OnClickCupRight()
     {
         CupKind++;
         if (CupKind > CupImageSet.Length - 1)

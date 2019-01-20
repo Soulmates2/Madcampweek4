@@ -10,6 +10,7 @@ public class CharacterMoveScripts : MonoBehaviour
     public Rigidbody PlayerRigidBody;
     public bool Is_MyCharacter = false;
     public int Item = 0;
+    public GameObject Sphere;
 
     private Rigidbody MyCarRigidBody;
     public Image ItemBox;
@@ -17,7 +18,8 @@ public class CharacterMoveScripts : MonoBehaviour
 
     void Start()
     {
-        ItemBox = GameObject.FindGameObjectWithTag("Item").GetComponent<Image>();
+        //ItemBox = GameObject.FindGameObjectWithTag("Item").GetComponent<Image>();
+        Sphere = GameObject.Find("Sphere");
     }
 
     // Update is called once per frame
@@ -26,6 +28,7 @@ public class CharacterMoveScripts : MonoBehaviour
         if (Is_MyCharacter)
         {
             CharacterMove();
+            UseItem();
         }
     }
 
@@ -103,38 +106,126 @@ public class CharacterMoveScripts : MonoBehaviour
                 transform.position += (transform.forward) * Accel;
             }
         }
-
-
+    }
+    private void UseItem()
+    {
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
-           // 아이템을 사용하는 코드. 굉장히 길어지겠군요 이부분도 떼서 함수로 작업합시다.
+            if (Item == ItemKindDefinition.NO_ITEM)
+            {
+                Debug.Log("Sphere");
+                GameObject FA = Instantiate(Sphere);
+                Debug.Log("Sphere init");
+                Rigidbody RGBD = FA.GetComponent<Rigidbody>();
+                FA.transform.position = transform.position;
+                FA.transform.position += (transform.forward) * 1.0f;
+                Debug.Log("Sphere pos");
+                RGBD.AddRelativeForce(0, 300, 300);
+                Debug.Log("FA pos");
+            }
+            // BLUE: BARRIER
+            if (Item == ItemKindDefinition.BLUE_FIRST)
+            {
+
+            }
+            if (Item == ItemKindDefinition.BLUE_SECOND)
+            {
+
+            }
+            // RED: FORWARD ATTACK
+            if (Item == ItemKindDefinition.RED_FIRST)
+            {
+                GameObject FA = Instantiate(Sphere);
+                FA.transform.position = transform.position;
+                FA.transform.position += (transform.forward) * 1.0f;
+            }
+            if (Item == ItemKindDefinition.RED_SECOND)
+            {
+
+            }
+            // GREEN: BOOST
+            if (Item == ItemKindDefinition.GREEN_FIRST)
+            {
+
+            }
+            if (Item == ItemKindDefinition.GREEN_SECOND)
+            {
+
+            }
+            // YELLOW: BACKWARD ATTACK
+            if (Item == ItemKindDefinition.YELLOW_FIRST)
+            {
+
+            }
+            if (Item == ItemKindDefinition.YELLOW_SECOND)
+            {
+
+            }            
         }
 
     }
+    private void FowardAttack(GameObject FA)
+    {
+        
+    }
+
+
+    // GET & UPGRADE ITEM 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<TypeScript>() != null)
         {
-            //지금 여기 아이템 업그레이드가 되지 않습니다. 아이템이 실제로 업그레이드 되는 코드를 작성해주세요
             if (collision.gameObject.GetComponent<TypeScript>().GetTypeScript().Equals("Blue Item"))
             {
-                Item = ItemKindDefinition.BLUE_FIRST;
-                Destroy(collision.gameObject);
+                if (Item == ItemKindDefinition.BLUE_FIRST)
+                {
+                    Item = ItemKindDefinition.BLUE_SECOND;
+                    Destroy(collision.gameObject);
+                }
+                else
+                {
+                    Item = ItemKindDefinition.BLUE_FIRST;
+                    Destroy(collision.gameObject);
+                }
             }
             if (collision.gameObject.GetComponent<TypeScript>().GetTypeScript().Equals("Red Item"))
             {
-                Item = ItemKindDefinition.RED_FIRST;
-                Destroy(collision.gameObject);
+                if (Item == ItemKindDefinition.RED_FIRST)
+                {
+                    Item = ItemKindDefinition.RED_SECOND;
+                    Destroy(collision.gameObject);
+                }
+                else
+                {
+                    Item = ItemKindDefinition.RED_FIRST;
+                    Destroy(collision.gameObject);
+                }
             }
             if (collision.gameObject.GetComponent<TypeScript>().GetTypeScript().Equals("Yellow Item"))
             {
-                Item = ItemKindDefinition.YELLOW_FIRST;
-                Destroy(collision.gameObject);
+                if (Item == ItemKindDefinition.YELLOW_FIRST)
+                {
+                    Item = ItemKindDefinition.YELLOW_SECOND;
+                    Destroy(collision.gameObject);
+                }
+                else
+                {
+                    Item = ItemKindDefinition.YELLOW_FIRST;
+                    Destroy(collision.gameObject);
+                }
             }
             if (collision.gameObject.GetComponent<TypeScript>().GetTypeScript().Equals("Green Item"))
             {
-                Item = ItemKindDefinition.GREEN_FIRST;
-                Destroy(collision.gameObject);
+                if (Item == ItemKindDefinition.GREEN_FIRST)
+                {
+                    Item = ItemKindDefinition.GREEN_SECOND;
+                    Destroy(collision.gameObject);
+                }
+                else
+                {
+                    Item = ItemKindDefinition.GREEN_FIRST;
+                    Destroy(collision.gameObject);
+                }
             }
         }
 

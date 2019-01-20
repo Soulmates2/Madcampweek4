@@ -16,6 +16,11 @@ public class CharacterMoveScripts : MonoBehaviour
     public Image ItemBox;
     // Start is called before the first frame update
 
+
+    public List<AxleInfo> axleInfos; // the information about each individual axle
+    public float maxMotorTorque; // maximum torque the motor can apply to wheel
+    public float maxSteeringAngle; // maximum steer angle the wheel can have
+
     void Start()
     {
         //ItemBox = GameObject.FindGameObjectWithTag("Item").GetComponent<Image>();
@@ -27,86 +32,42 @@ public class CharacterMoveScripts : MonoBehaviour
     {
         if (Is_MyCharacter)
         {
-            CharacterMove();
             UseItem();
         }
     }
 
-    void CharacterMove()
+    [System.Serializable]
+    public class AxleInfo
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            if (Accel < 0.1f && Accel > -0.1f)
-            {
-                transform.Rotate(new Vector3(0, -Time.deltaTime * 320.0f, 0) * Accel);
-            }
-            else
-                transform.Rotate(new Vector3(0, -Time.deltaTime * 160.0f, 0) * Accel);
-        }
+        public WheelCollider leftWheel;
+        public WheelCollider rightWheel;
+        public bool motor; // is this wheel attached to motor?
+        public bool steering; // does this wheel apply steer angle?
+    }
 
-        if (Input.GetKey(KeyCode.RightArrow))
+    public void FixedUpdate()
+    {
+        if (Is_MyCharacter)
         {
-            if (Accel < 0.1f && Accel > -0.1f)
-            {
-                transform.Rotate(new Vector3(0, Time.deltaTime * 320.0f, 0) * Accel);
-            }
-            else
-                transform.Rotate(new Vector3(0, Time.deltaTime * 160.0f, 0) * Accel);
-        }
+            float motor = maxMotorTorque * Input.GetAxis("Vertical");
+            float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
 
-
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            if (Accel <= 0.5f)
+            foreach (AxleInfo axleInfo in axleInfos)
             {
-                Accel += 0.003f;
-                transform.position += (transform.forward) * Accel;
-                //speed += new Vector3(0, 0, 0.1f);
-                //PlayerRigidBody.velocity = speed;
-                //PlayerRigidBody.AddForce(0, 0, 80f * Time.deltaTime);
-                //transform.GetComponent<Rigidbody>().AddForce(0,0, 80f * Time.deltaTime);
-            }
-            else
-            {
-                transform.position += (transform.forward) * Accel;
-            }
-        }
-        else
-        {
-            if (Accel > 0)
-            {
-                Accel -= 0.003f;
-                transform.position += (transform.forward) * Accel;
-            }
-        }
-
-
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            if (Accel >= 0f)
-            {
-                Accel -= 0.001f;
-
-            }
-            else if (Accel < 0f && Accel >= -0.3f)
-            {
-                Accel -= 0.001f;
-                transform.position += (transform.forward) * Accel;
-            }
-            else
-            {
-                transform.position += (transform.forward) * Accel;
-            }
-        }
-        else
-        {
-            if (Accel < 0)
-            {
-                Accel += 0.001f;
-                transform.position += (transform.forward) * Accel;
+                if (axleInfo.steering)
+                {
+                    axleInfo.leftWheel.steerAngle = steering;
+                    axleInfo.rightWheel.steerAngle = steering;
+                }
+                if (axleInfo.motor)
+                {
+                    axleInfo.leftWheel.motorTorque = motor;
+                    axleInfo.rightWheel.motorTorque = motor;
+                }
             }
         }
     }
+
     private void UseItem()
     {
         if (Input.GetKeyDown(KeyCode.LeftControl))

@@ -392,29 +392,6 @@ MonoBehaviour:
   CurrentLapTime: {fileID: 0}
   LastLapTime: {fileID: 0}
   BestLapTime: {fileID: 0}
---- !u!114 &8796480876069610007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7941915238179740481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28d53f0b9674aea4b837d1e725f1206d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  axleInfos:
-  - leftWheel: {fileID: 5625610957651323342}
-    rightWheel: {fileID: 8802120108191222633}
-    motor: 1
-    steering: 1
-  - leftWheel: {fileID: 8142718808972036548}
-    rightWheel: {fileID: 4296417559585318667}
-    motor: 0
-    steering: 0
-  maxMotorTorque: 400
-  maxSteeringAngle: 30
 --- !u!1 &7941915239027748854
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,7 +417,7 @@ Transform:
   m_GameObject: {fileID: 7941915239027748854}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_Children:
   - {fileID: 7941915238179309409}
   m_Father: {fileID: 0}
@@ -535,6 +512,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7941915239027748849}
     m_Modifications:
+    - target: {fileID: 100016, guid: 62d38c3b81a175f4585f3bb99fca3071, type: 3}
+      propertyPath: m_Name
+      value: F1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100016, guid: 62d38c3b81a175f4585f3bb99fca3071, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 400016, guid: 62d38c3b81a175f4585f3bb99fca3071, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -579,14 +564,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 100016, guid: 62d38c3b81a175f4585f3bb99fca3071, type: 3}
-      propertyPath: m_Name
-      value: F1
-      objectReference: {fileID: 0}
-    - target: {fileID: 100016, guid: 62d38c3b81a175f4585f3bb99fca3071, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 400014, guid: 62d38c3b81a175f4585f3bb99fca3071, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
@@ -621,9 +598,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3782933420616151938, guid: 62d38c3b81a175f4585f3bb99fca3071,
         type: 3}
+      propertyPath: axleInfos.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782933420616151938, guid: 62d38c3b81a175f4585f3bb99fca3071,
+        type: 3}
       propertyPath: PlayerRigidBody
       value: 
       objectReference: {fileID: 5498979317116091177}
+    - target: {fileID: 3782933420616151938, guid: 62d38c3b81a175f4585f3bb99fca3071,
+        type: 3}
+      propertyPath: axleInfos.Array.data[0].leftWheel
+      value: 
+      objectReference: {fileID: 5625610957651323342}
+    - target: {fileID: 3782933420616151938, guid: 62d38c3b81a175f4585f3bb99fca3071,
+        type: 3}
+      propertyPath: axleInfos.Array.data[0].rightWheel
+      value: 
+      objectReference: {fileID: 8802120108191222633}
+    - target: {fileID: 3782933420616151938, guid: 62d38c3b81a175f4585f3bb99fca3071,
+        type: 3}
+      propertyPath: axleInfos.Array.data[1].leftWheel
+      value: 
+      objectReference: {fileID: 8142718808972036548}
+    - target: {fileID: 3782933420616151938, guid: 62d38c3b81a175f4585f3bb99fca3071,
+        type: 3}
+      propertyPath: axleInfos.Array.data[1].rightWheel
+      value: 
+      objectReference: {fileID: 4296417559585318667}
+    - target: {fileID: 3782933420616151938, guid: 62d38c3b81a175f4585f3bb99fca3071,
+        type: 3}
+      propertyPath: axleInfos.Array.data[0].steering
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782933420616151938, guid: 62d38c3b81a175f4585f3bb99fca3071,
+        type: 3}
+      propertyPath: axleInfos.Array.data[1].motor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782933420616151938, guid: 62d38c3b81a175f4585f3bb99fca3071,
+        type: 3}
+      propertyPath: maxMotorTorque
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3782933420616151938, guid: 62d38c3b81a175f4585f3bb99fca3071,
+        type: 3}
+      propertyPath: maxSteeringAngle
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62d38c3b81a175f4585f3bb99fca3071, type: 3}
 --- !u!1 &7941915238179740481 stripped

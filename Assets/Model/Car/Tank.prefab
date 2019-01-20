@@ -358,7 +358,6 @@ GameObject:
   - component: {fileID: 6242742108228412400}
   - component: {fileID: 6284811056952179164}
   - component: {fileID: 2242352288124268611}
-  - component: {fileID: 5237047642696911476}
   m_Layer: 0
   m_Name: Stryker
   m_TagString: Player
@@ -485,7 +484,27 @@ MonoBehaviour:
   PlayerRigidBody: {fileID: 6284811056952179164}
   Is_MyCharacter: 0
   Item: 0
+  Sphere: {fileID: 0}
   ItemBox: {fileID: 0}
+  axleInfos:
+  - leftWheel: {fileID: 4019552558183084080}
+    rightWheel: {fileID: 6014451297409828015}
+    motor: 1
+    steering: 1
+  - leftWheel: {fileID: 4049583341618096081}
+    rightWheel: {fileID: 1916525489681372999}
+    motor: 1
+    steering: 0
+  - leftWheel: {fileID: 4019552558183084080}
+    rightWheel: {fileID: 4398112837983034907}
+    motor: 1
+    steering: 0
+  - leftWheel: {fileID: 2426332429878373919}
+    rightWheel: {fileID: 2987683551257428463}
+    motor: 1
+    steering: 0
+  maxMotorTorque: 1000
+  maxSteeringAngle: 30
 --- !u!54 &6284811056952179164
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -518,37 +537,6 @@ MonoBehaviour:
   CurrentLapTime: {fileID: 0}
   LastLapTime: {fileID: 0}
   BestLapTime: {fileID: 0}
---- !u!114 &5237047642696911476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 938851664837339081}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28d53f0b9674aea4b837d1e725f1206d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  axleInfos:
-  - leftWheel: {fileID: 4019552558183084080}
-    rightWheel: {fileID: 6014451297409828015}
-    motor: 1
-    steering: 1
-  - leftWheel: {fileID: 4049583341618096081}
-    rightWheel: {fileID: 1916525489681372999}
-    motor: 1
-    steering: 1
-  - leftWheel: {fileID: 8608349781307401044}
-    rightWheel: {fileID: 4398112837983034907}
-    motor: 1
-    steering: 0
-  - leftWheel: {fileID: 2426332429878373919}
-    rightWheel: {fileID: 2987683551257428463}
-    motor: 1
-    steering: 0
-  maxMotorTorque: 0
-  maxSteeringAngle: 0
 --- !u!1 &1190534954687750416
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,7 +1280,7 @@ Transform:
   m_GameObject: {fileID: 3692967034896483938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 91366701338635922}
   m_Father: {fileID: 0}

@@ -36,7 +36,7 @@ public class CircuitRaceManagerScripts : MonoBehaviour
         AI = new GameObject[7];
         for(int i = 0; i < 7; i++)
         {
-            AI[i] = Instantiate(Car[Random.Range(0, Car.Length)], StartPositionObject[i].transform.position, Quaternion.Euler(0, 0, 0));
+            AI[i] = Instantiate(Car[Random.Range(0, Car.Length)], StartPositionObject[i+1].transform.position, Quaternion.Euler(0, 0, 0));
             Camera[] Cam = AI[i].GetComponentsInChildren<Camera>();
             foreach(Camera c in Cam)
             {

@@ -25,6 +25,10 @@ public class CharacterMoveAdvanced : MonoBehaviour
     {
         //ItemBox = GameObject.FindGameObjectWithTag("Item").GetComponent<Image>();
         Sphere = GameObject.Find("Sphere");
+        foreach(AxleInfo axleInfo in axleInfos)
+        {
+
+        }
     }
 
     // Update is called once per frame
@@ -33,27 +37,75 @@ public class CharacterMoveAdvanced : MonoBehaviour
         if (Is_MyCharacter)
         {
             UseItem();
+            if (Input.GetKey(KeyCode.Space))
+            {
+                foreach (AxleInfo ax in axleInfos)
+                {
+                    ax.leftWheel.motorTorque = 0.0f;
+                    ax.rightWheel.motorTorque = 0.0f;
+                    ax.leftWheel.brakeTorque = 10000.0f;
+                    ax.rightWheel.brakeTorque = 10000.0f;
+                }
+                if (PlayerRigidBody.velocity.sqrMagnitude > 35.0f)
+                {
+                    PlayerRigidBody.velocity -= PlayerRigidBody.gameObject.transform.forward * 0.5f;
+                }
+                else
+                {
+                    PlayerRigidBody.velocity = Vector3.zero;
+                }
+            }
+            if (Input.GetKeyUp(KeyCode.Space))
+            {
+                foreach (AxleInfo ax in axleInfos)
+                {
+                    ax.leftWheel.motorTorque = 0.0f;
+                    ax.rightWheel.motorTorque = 0.0f;
+                    ax.leftWheel.brakeTorque = 0.0f;
+                    ax.rightWheel.brakeTorque = 0.0f;
+                }
+            }
         }
     }
 
     public void FixedUpdate()
     {
+        
         if (Is_MyCharacter)
         {
-            float motor = maxMotorTorque * Input.GetAxis("Vertical");
+
+            Debug.Log(PlayerRigidBody.velocity.sqrMagnitude);
+
             float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
 
             foreach (AxleInfo axleInfo in axleInfos)
             {
+                axleInfo.leftWheel.motorTorque = 0.0f;
+                axleInfo.rightWheel.motorTorque = 0.0f;
                 if (axleInfo.steering)
                 {
                     axleInfo.leftWheel.steerAngle = steering;
                     axleInfo.rightWheel.steerAngle = steering;
+
                 }
-                if (axleInfo.motor)
+                if (Input.GetKey(KeyCode.UpArrow))
                 {
-                    axleInfo.leftWheel.motorTorque = motor;
-                    axleInfo.rightWheel.motorTorque = motor;
+                    //axleInfo.leftWheel.motorTorque = 20 * maxMotorTorque;
+                    //axleInfo.rightWheel.motorTorque = 20 * maxMotorTorque;
+                    if(PlayerRigidBody.velocity.sqrMagnitude < 700.0f)
+                    {
+                        PlayerRigidBody.velocity += PlayerRigidBody.gameObject.transform.forward * 0.3f;
+                    }
+                }
+
+                if (Input.GetKey(KeyCode.DownArrow))
+                {
+                    //axleInfo.leftWheel.motorTorque = 20 * maxMotorTorque;
+                    //axleInfo.rightWheel.motorTorque = 20 * maxMotorTorque;
+                    if (PlayerRigidBody.velocity.magnitude < 700.0f)
+                    {
+                        PlayerRigidBody.transform.position -= PlayerRigidBody.gameObject.transform.forward * 0.05f;
+                    }
                 }
             }
         }

@@ -628,6 +628,7 @@ GameObject:
   - component: {fileID: 9500000}
   - component: {fileID: 1278730382042327813}
   - component: {fileID: 3782933420616151938}
+  - component: {fileID: 5380835949650321073}
   m_Layer: 0
   m_Name: F1
   m_TagString: Untagged
@@ -703,3 +704,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: {x: 0, y: 0, z: 0}
   PlayerRigidBody: {fileID: 0}
+  Is_MyCharacter: 0
+  Item: 0
+  ItemBox: {fileID: 0}
+--- !u!114 &5380835949650321073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28d53f0b9674aea4b837d1e725f1206d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axleInfos: []
+  maxMotorTorque: 0
+  maxSteeringAngle: 0

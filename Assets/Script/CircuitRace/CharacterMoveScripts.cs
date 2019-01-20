@@ -36,15 +36,6 @@ public class CharacterMoveScripts : MonoBehaviour
         }
     }
 
-    [System.Serializable]
-    public class AxleInfo
-    {
-        public WheelCollider leftWheel;
-        public WheelCollider rightWheel;
-        public bool motor; // is this wheel attached to motor?
-        public bool steering; // does this wheel apply steer angle?
-    }
-
     public void FixedUpdate()
     {
         if (Is_MyCharacter)
@@ -66,6 +57,15 @@ public class CharacterMoveScripts : MonoBehaviour
                 }
             }
         }
+    }
+
+    [System.Serializable]
+    public class AxleInfo
+    {
+        public WheelCollider leftWheel;
+        public WheelCollider rightWheel;
+        public bool motor; // is this wheel attached to motor?
+        public bool steering; // does this wheel apply steer angle?
     }
 
     private void UseItem()

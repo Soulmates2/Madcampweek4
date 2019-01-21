@@ -11,6 +11,7 @@ public class ItemUse : MonoBehaviour
     public bool Is_MyCharacter = false;
     public int Item = 0;
     public GameObject Sphere;
+    public Transform ShootPosition;
 
     private Rigidbody MyCarRigidBody;
     public Image ItemBox;
@@ -75,14 +76,12 @@ public class ItemUse : MonoBehaviour
             if (Item == ItemKindDefinition.NO_ITEM)
             {
                 Debug.Log("Sphere");
-                GameObject FA = Instantiate(Sphere);
+                GameObject FA = Instantiate(Sphere, ShootPosition);
+                FA.transform.position = ShootPosition.position;
                 Debug.Log("Sphere init");
                 Rigidbody RGBD = FA.GetComponent<Rigidbody>();
-                FA.transform.position = (transform.position + FA.transform.forward);
-                //FA.transform.position += (transform.forward) * 3.0f;
                 Debug.Log("Sphere pos");
-                RGBD.AddRelativeForce(FA.transform.forward * 300000000);
-                RGBD.AddRelativeForce(FA.transform.up * 300000000);
+                RGBD.AddRelativeForce(ShootPosition.forward * 2000 + ShootPosition.up * 500);
                 Debug.Log("FA pos");
             }
             // BLUE: BARRIER

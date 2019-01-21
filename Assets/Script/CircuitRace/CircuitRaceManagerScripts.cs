@@ -27,7 +27,7 @@ public class CircuitRaceManagerScripts : MonoBehaviour
         GameObject[] StartPositionObject = GameObject.FindGameObjectsWithTag("StartPosition");
         Player = Instantiate(Car[CircuitRaceManager.CarKind], StartPositionObject[0].transform.position, Quaternion.Euler(0, 0, 0));
         
-        Player.GetComponentInChildren<CharacterMoveScripts>().Is_MyCharacter = true;
+        Player.GetComponentInChildren<ItemUse>().Is_MyCharacter = true;
         MyCarRigidBody = Player.GetComponentInChildren<Rigidbody>();
         Instantiate(Items[Random.Range(0, Items.Length)], StartPositionObject[0].transform.position + Vector3.forward * 5, Quaternion.Euler(0, 0, 0));
 
@@ -42,7 +42,7 @@ public class CircuitRaceManagerScripts : MonoBehaviour
             {
                 c.enabled = false;
             }
-            AI[i].GetComponentInChildren<CharacterMoveScripts>().Is_MyCharacter = false;
+            AI[i].GetComponentInChildren<ItemUse>().Is_MyCharacter = false;
         }
 
 

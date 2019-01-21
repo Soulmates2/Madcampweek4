@@ -181,7 +181,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 134815867850672930}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8538275431194950997}
@@ -241,7 +241,7 @@ BoxCollider:
   m_GameObject: {fileID: 134815867850672930}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 2.8570871, y: 2.8182526, z: 0.5101738}
   m_Center: {x: -12.900959, y: 12.744167, z: -35.826523}
@@ -441,7 +441,7 @@ MeshCollider:
   m_GameObject: {fileID: 396084578152479336}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 1
   m_CookingOptions: 14
@@ -1088,7 +1088,7 @@ MeshCollider:
   m_GameObject: {fileID: 2751597108223202082}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 1
   m_CookingOptions: 14
@@ -1908,8 +1908,8 @@ GameObject:
   - component: {fileID: 2108649445072043186}
   - component: {fileID: 2086840552529896598}
   - component: {fileID: 3341120738901517002}
-  - component: {fileID: 8010038933809413222}
   - component: {fileID: 6635330015689358677}
+  - component: {fileID: 1499527996773747687}
   m_Layer: 0
   m_Name: Trapper
   m_TagString: Player
@@ -1967,19 +1967,6 @@ MonoBehaviour:
   CurrentLapTime: {fileID: 0}
   LastLapTime: {fileID: 0}
   BestLapTime: {fileID: 0}
---- !u!65 &8010038933809413222
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4590646166842508329}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4, y: 3, z: 11}
-  m_Center: {x: -0.3, y: 1, z: 0}
 --- !u!114 &6635330015689358677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2013,6 +2000,20 @@ MonoBehaviour:
     steering: 0
   maxMotorTorque: 400
   maxSteeringAngle: 20
+--- !u!136 &1499527996773747687
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4590646166842508329}
+  m_Material: {fileID: 13400000, guid: e1054f9a4725354448dfd14c09d949ad, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.8
+  m_Height: 12
+  m_Direction: 2
+  m_Center: {x: -0.2, y: 1, z: 0}
 --- !u!1 &4646423408093029860
 GameObject:
   m_ObjectHideFlags: 0
@@ -3197,7 +3198,7 @@ BoxCollider:
   m_GameObject: {fileID: 6579571292797956071}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 2.857089, y: 2.8182526, z: 0.5101738}
   m_Center: {x: 12.904499, y: 12.744167, z: -35.826523}
@@ -4706,7 +4707,7 @@ MeshCollider:
   m_GameObject: {fileID: 9182270867022872717}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14

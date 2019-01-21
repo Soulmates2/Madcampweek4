@@ -127,11 +127,11 @@ WheelCollider:
     damper: 4500
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 0
-  m_Mass: 20
-  m_WheelDampingRate: 0.25
+  m_ForceAppPointDistance: 0.2
+  m_Mass: 50000
+  m_WheelDampingRate: 0.3
   m_ForwardFriction:
-    m_ExtremumSlip: 0.4
+    m_ExtremumSlip: 0.6
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
@@ -188,11 +188,11 @@ WheelCollider:
     damper: 4500
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 0
-  m_Mass: 20
-  m_WheelDampingRate: 0.25
+  m_ForceAppPointDistance: 0.2
+  m_Mass: 50000
+  m_WheelDampingRate: 0.3
   m_ForwardFriction:
-    m_ExtremumSlip: 0.4
+    m_ExtremumSlip: 0.6
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
@@ -249,11 +249,11 @@ WheelCollider:
     damper: 4500
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 0
-  m_Mass: 20
-  m_WheelDampingRate: 0.25
+  m_ForceAppPointDistance: 0.2
+  m_Mass: 50000
+  m_WheelDampingRate: 0.3
   m_ForwardFriction:
-    m_ExtremumSlip: 0.4
+    m_ExtremumSlip: 0.6
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
@@ -344,11 +344,11 @@ WheelCollider:
     damper: 4500
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 0
-  m_Mass: 20
-  m_WheelDampingRate: 0.25
+  m_ForceAppPointDistance: 0.2
+  m_Mass: 50000
+  m_WheelDampingRate: 0.3
   m_ForwardFriction:
-    m_ExtremumSlip: 0.4
+    m_ExtremumSlip: 0.6
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
@@ -368,9 +368,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7941915238179740481}
   serializedVersion: 2
-  m_Mass: 1500
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 10000
+  m_Drag: 1.2
+  m_AngularDrag: 0.7
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -646,7 +646,34 @@ PrefabInstance:
       propertyPath: maxSteeringAngle
       value: 30
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 172781441484009247, guid: 62d38c3b81a175f4585f3bb99fca3071,
+        type: 3}
+      propertyPath: PlayerRigidBody
+      value: 
+      objectReference: {fileID: 5498979317116091177}
+    - target: {fileID: 172781441484009247, guid: 62d38c3b81a175f4585f3bb99fca3071,
+        type: 3}
+      propertyPath: axleInfos.Array.data[0].leftWheel
+      value: 
+      objectReference: {fileID: 5625610957651323342}
+    - target: {fileID: 172781441484009247, guid: 62d38c3b81a175f4585f3bb99fca3071,
+        type: 3}
+      propertyPath: axleInfos.Array.data[0].rightWheel
+      value: 
+      objectReference: {fileID: 8802120108191222633}
+    - target: {fileID: 172781441484009247, guid: 62d38c3b81a175f4585f3bb99fca3071,
+        type: 3}
+      propertyPath: axleInfos.Array.data[1].leftWheel
+      value: 
+      objectReference: {fileID: 8142718808972036548}
+    - target: {fileID: 172781441484009247, guid: 62d38c3b81a175f4585f3bb99fca3071,
+        type: 3}
+      propertyPath: axleInfos.Array.data[1].rightWheel
+      value: 
+      objectReference: {fileID: 4296417559585318667}
+    m_RemovedComponents:
+    - {fileID: 3782933420616151938, guid: 62d38c3b81a175f4585f3bb99fca3071, type: 3}
+    - {fileID: 5380835949650321073, guid: 62d38c3b81a175f4585f3bb99fca3071, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 62d38c3b81a175f4585f3bb99fca3071, type: 3}
 --- !u!1 &7941915238179740481 stripped
 GameObject:

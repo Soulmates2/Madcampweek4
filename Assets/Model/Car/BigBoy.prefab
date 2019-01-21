@@ -119,8 +119,8 @@ GameObject:
   - component: {fileID: 1488442596422889399}
   - component: {fileID: 8088024560098447949}
   - component: {fileID: 7179884843122044397}
-  - component: {fileID: 7045577388285149889}
   - component: {fileID: 5367927393815830048}
+  - component: {fileID: 7670487794596731447}
   m_Layer: 0
   m_Name: Humvee
   m_TagString: Player
@@ -158,9 +158,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1334431953902853985}
   serializedVersion: 2
-  m_Mass: 2000
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 10000
+  m_Drag: 1.2
+  m_AngularDrag: 0.7
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -179,35 +179,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 1.9, z: 4.6}
   m_Center: {x: 0, y: 1.1, z: 0.1}
---- !u!114 &7045577388285149889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1334431953902853985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0053c4cc8cfa8242be674da0a2f13ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: {x: 0, y: 0, z: 0}
-  PlayerRigidBody: {fileID: 8088024560098447949}
-  Is_MyCharacter: 0
-  Item: 0
-  Sphere: {fileID: 0}
-  ItemBox: {fileID: 0}
-  axleInfos:
-  - leftWheel: {fileID: 5339124825644591457}
-    rightWheel: {fileID: 4698022375368611649}
-    motor: 0
-    steering: 1
-  - leftWheel: {fileID: 3819080414535964755}
-    rightWheel: {fileID: 2274600434855206881}
-    motor: 1
-    steering: 0
-  maxMotorTorque: 1000
-  maxSteeringAngle: 30
 --- !u!114 &5367927393815830048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +195,39 @@ MonoBehaviour:
   CurrentLapTime: {fileID: 0}
   LastLapTime: {fileID: 0}
   BestLapTime: {fileID: 0}
+--- !u!114 &7670487794596731447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334431953902853985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e1868eaadb575d49aac8e33821161ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: {x: 0, y: 0, z: 0}
+  PlayerRigidBody: {fileID: 8088024560098447949}
+  Is_MyCharacter: 0
+  Item: 0
+  Sphere: {fileID: 0}
+  Half_Accelerate: 2
+  Accelerate: 1
+  HighSpeed: 700
+  BoostingHighSpeed: 900
+  ItemBox: {fileID: 0}
+  axleInfos:
+  - leftWheel: {fileID: 5339124825644591457}
+    rightWheel: {fileID: 4698022375368611649}
+    motor: 1
+    steering: 1
+  - leftWheel: {fileID: 3819080414535964755}
+    rightWheel: {fileID: 2274600434855206881}
+    motor: 1
+    steering: 0
+  maxMotorTorque: 400
+  maxSteeringAngle: 20
 --- !u!1 &1703063540450730776
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,11 +304,11 @@ WheelCollider:
     damper: 5000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 0.3
-  m_Mass: 30
+  m_ForceAppPointDistance: 0.5
+  m_Mass: 50000
   m_WheelDampingRate: 0.3
   m_ForwardFriction:
-    m_ExtremumSlip: 0.4
+    m_ExtremumSlip: 0.6
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
@@ -361,11 +365,11 @@ WheelCollider:
     damper: 5000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 0.3
-  m_Mass: 30
+  m_ForceAppPointDistance: 0.5
+  m_Mass: 50000
   m_WheelDampingRate: 0.3
   m_ForwardFriction:
-    m_ExtremumSlip: 0.4
+    m_ExtremumSlip: 0.6
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
@@ -655,11 +659,11 @@ WheelCollider:
     damper: 5000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 0.3
-  m_Mass: 30
+  m_ForceAppPointDistance: 0.5
+  m_Mass: 50000
   m_WheelDampingRate: 0.3
   m_ForwardFriction:
-    m_ExtremumSlip: 0.4
+    m_ExtremumSlip: 0.6
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
@@ -1363,11 +1367,11 @@ WheelCollider:
     damper: 5000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 0.3
-  m_Mass: 30
+  m_ForceAppPointDistance: 0.5
+  m_Mass: 50000
   m_WheelDampingRate: 0.3
   m_ForwardFriction:
-    m_ExtremumSlip: 0.4
+    m_ExtremumSlip: 0.6
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5

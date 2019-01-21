@@ -11,6 +11,9 @@ public class CharacterMoveAdvanced : MonoBehaviour
     public bool Is_MyCharacter = false;
     public int Item = 0;
     public GameObject Sphere;
+    public GameObject FA;
+    public GameObject BA1;
+    public GameObject BA2;
 
     public float Half_Accelerate = 2.0f;
     public float Accelerate = 1.0f;
@@ -19,6 +22,11 @@ public class CharacterMoveAdvanced : MonoBehaviour
 
     private Rigidbody MyCarRigidBody;
     public Image ItemBox;
+    public Transform ShootPosition;
+    public Transform LBackPosition;
+    public Transform BackPosition;
+    public Transform RBackPosition;
+
     // Start is called before the first frame update
 
 
@@ -29,7 +37,7 @@ public class CharacterMoveAdvanced : MonoBehaviour
     void Start()
     {
         //ItemBox = GameObject.FindGameObjectWithTag("Item").GetComponent<Image>();
-        Sphere = GameObject.Find("Sphere");
+        //Sphere = GameObject.Find("Sphere");
         foreach(AxleInfo axleInfo in axleInfos)
         {
 
@@ -79,7 +87,7 @@ public class CharacterMoveAdvanced : MonoBehaviour
         if (Is_MyCharacter)
         {
 
-            Debug.Log(PlayerRigidBody.velocity.sqrMagnitude);
+            //Debug.Log(PlayerRigidBody.velocity.sqrMagnitude);
 
             float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
 
@@ -134,60 +142,98 @@ public class CharacterMoveAdvanced : MonoBehaviour
         {
             if (Item == ItemKindDefinition.NO_ITEM)
             {
-                Debug.Log("Sphere");
-                GameObject FA = Instantiate(Sphere);
-                Debug.Log("Sphere init");
-                Rigidbody RGBD = FA.GetComponent<Rigidbody>();
-                FA.transform.position = transform.position;
-                FA.transform.position += (transform.forward) * 1.0f;
-                Debug.Log("Sphere pos");
-                RGBD.AddRelativeForce(0, 300, 300);
-                Debug.Log("FA pos");
+                
             }
             // BLUE: BARRIER
             if (Item == ItemKindDefinition.BLUE_FIRST)
             {
-
+                PlayerRigidBody.mass *= 10;
+                Invoke("Shield", 5);
+                Item = ItemKindDefinition.NO_ITEM;
             }
             if (Item == ItemKindDefinition.BLUE_SECOND)
             {
-
+                PlayerRigidBody.mass *= 10;
+                Accelerate = 20;
+                Half_Accelerate = 40;
+                Invoke("Boost", 5);
+                Invoke("Shield", 5);
+                Debug.Log("Boostset");
+                Item = ItemKindDefinition.NO_ITEM;
             }
+
             // RED: FORWARD ATTACK
             if (Item == ItemKindDefinition.RED_FIRST)
             {
-                GameObject FA = Instantiate(Sphere);
-                FA.transform.position = transform.position;
-                FA.transform.position += (transform.forward) * 1.0f;
+                FA = Instantiate(Sphere);
+                FA.transform.position = ShootPosition.position;
+                Rigidbody RGBD = FA.GetComponent<Rigidbody>();
+                RGBD.AddRelativeForce(transform.forward * 200000000 + transform.up * 100000000 + PlayerRigidBody.velocity);
+                RGBD.AddExplosionForce(100, FA.transform.position, 10);
+
+                Item = ItemKindDefinition.NO_ITEM;
             }
+
             if (Item == ItemKindDefinition.RED_SECOND)
             {
-
+                Item = ItemKindDefinition.NO_ITEM;
             }
+
             // GREEN: BOOST
             if (Item == ItemKindDefinition.GREEN_FIRST)
             {
-
+                Accelerate = 10;
+                Half_Accelerate = 20;
+                Invoke("Boost", 5);
+                Item = ItemKindDefinition.NO_ITEM;
             }
             if (Item == ItemKindDefinition.GREEN_SECOND)
             {
-
+                Accelerate = 25;
+                Half_Accelerate = 50;
+                Invoke("Boost", 5);
+                Item = ItemKindDefinition.NO_ITEM;
             }
             // YELLOW: BACKWARD ATTACK
             if (Item == ItemKindDefinition.YELLOW_FIRST)
             {
-
+                FA = Instantiate(Sphere);
+                FA.transform.position = BackPosition.position;
+                Rigidbody RGBD = FA.GetComponent<Rigidbody>();
+                RGBD.AddRelativeForce(-transform.forward * 200000000 + transform.up * 10000);
+                RGBD.AddExplosionForce(100, FA.transform.position, 10);
+                Item = ItemKindDefinition.NO_ITEM;
             }
             if (Item == ItemKindDefinition.YELLOW_SECOND)
             {
-
+                BA1 = Instantiate(Sphere);
+                BA1.transform.position = LBackPosition.position;
+                FA = Instantiate(Sphere);
+                FA.transform.position = BackPosition.position;
+                BA2 = Instantiate(Sphere);
+                BA2.transform.position = RBackPosition.position;
+                Rigidbody RGBD1 = BA1.GetComponent<Rigidbody>();
+                Rigidbody RGBD2 = FA.GetComponent<Rigidbody>();
+                Rigidbody RGBD3 = BA2.GetComponent<Rigidbody>();
+                RGBD1.AddRelativeForce(-transform.forward * 200000000 + transform.up * 10000);
+                RGBD1.AddExplosionForce(100, FA.transform.position, 10);
+                RGBD2.AddRelativeForce(-transform.forward * 200000000 + transform.up * 10000);
+                RGBD2.AddExplosionForce(100, FA.transform.position, 10);
+                RGBD3.AddRelativeForce(-transform.forward * 200000000 + transform.up * 10000);
+                RGBD3.AddExplosionForce(100, FA.transform.position, 10);
+                Item = ItemKindDefinition.NO_ITEM;
             }
         }
 
     }
-    private void FowardAttack(GameObject FA)
+    private void Boost()
     {
-
+        Accelerate = 1;
+        Half_Accelerate = 2;
+    }
+    private void Shield()
+    {
+        PlayerRigidBody.mass /= 10;
     }
 
 
@@ -198,54 +244,66 @@ public class CharacterMoveAdvanced : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<TypeScript>().GetTypeScript().Equals("Blue Item"))
             {
+                Destroy(collision.gameObject);
                 if (Item == ItemKindDefinition.BLUE_FIRST)
                 {
                     Item = ItemKindDefinition.BLUE_SECOND;
-                    Destroy(collision.gameObject);
+                }
+                else if (Item == ItemKindDefinition.BLUE_SECOND)
+                {
+                    Item = ItemKindDefinition.BLUE_SECOND;
                 }
                 else
                 {
                     Item = ItemKindDefinition.BLUE_FIRST;
-                    Destroy(collision.gameObject);
                 }
             }
             if (collision.gameObject.GetComponent<TypeScript>().GetTypeScript().Equals("Red Item"))
             {
+                Destroy(collision.gameObject);
                 if (Item == ItemKindDefinition.RED_FIRST)
                 {
                     Item = ItemKindDefinition.RED_SECOND;
-                    Destroy(collision.gameObject);
+                }
+                else if (Item == ItemKindDefinition.RED_SECOND)
+                {
+                    Item = ItemKindDefinition.RED_SECOND;
                 }
                 else
                 {
                     Item = ItemKindDefinition.RED_FIRST;
-                    Destroy(collision.gameObject);
                 }
             }
             if (collision.gameObject.GetComponent<TypeScript>().GetTypeScript().Equals("Yellow Item"))
             {
+                Destroy(collision.gameObject);
                 if (Item == ItemKindDefinition.YELLOW_FIRST)
                 {
                     Item = ItemKindDefinition.YELLOW_SECOND;
-                    Destroy(collision.gameObject);
+                }
+                else if (Item == ItemKindDefinition.YELLOW_SECOND)
+                {
+                    Item = ItemKindDefinition.YELLOW_SECOND;
                 }
                 else
                 {
                     Item = ItemKindDefinition.YELLOW_FIRST;
-                    Destroy(collision.gameObject);
                 }
             }
             if (collision.gameObject.GetComponent<TypeScript>().GetTypeScript().Equals("Green Item"))
             {
+                Destroy(collision.gameObject);
                 if (Item == ItemKindDefinition.GREEN_FIRST)
                 {
                     Item = ItemKindDefinition.GREEN_SECOND;
-                    Destroy(collision.gameObject);
+                }
+                else if (Item == ItemKindDefinition.GREEN_SECOND)
+                {
+                    Item = ItemKindDefinition.GREEN_SECOND;
                 }
                 else
                 {
                     Item = ItemKindDefinition.GREEN_FIRST;
-                    Destroy(collision.gameObject);
                 }
             }
         }

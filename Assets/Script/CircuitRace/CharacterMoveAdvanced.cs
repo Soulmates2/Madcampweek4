@@ -79,7 +79,7 @@ public class CharacterMoveAdvanced : MonoBehaviour
         if (Is_MyCharacter)
         {
 
-            Debug.Log(PlayerRigidBody.velocity.sqrMagnitude);
+            //Debug.Log(PlayerRigidBody.velocity.sqrMagnitude);
 
             float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterMoveScripts : MonoBehaviour
+public class ItemUse : MonoBehaviour
 {
     public Vector3 speed;
     float Accel;
@@ -78,10 +78,11 @@ public class CharacterMoveScripts : MonoBehaviour
                 GameObject FA = Instantiate(Sphere);
                 Debug.Log("Sphere init");
                 Rigidbody RGBD = FA.GetComponent<Rigidbody>();
-                FA.transform.position = transform.position;
-                FA.transform.position += (transform.forward) * 1.0f;
+                FA.transform.position = (transform.position + FA.transform.forward);
+                //FA.transform.position += (transform.forward) * 3.0f;
                 Debug.Log("Sphere pos");
-                RGBD.AddRelativeForce(0, 300, 300);
+                RGBD.AddRelativeForce(FA.transform.forward * 300000000);
+                RGBD.AddRelativeForce(FA.transform.up * 300000000);
                 Debug.Log("FA pos");
             }
             // BLUE: BARRIER
@@ -96,9 +97,7 @@ public class CharacterMoveScripts : MonoBehaviour
             // RED: FORWARD ATTACK
             if (Item == ItemKindDefinition.RED_FIRST)
             {
-                GameObject FA = Instantiate(Sphere);
-                FA.transform.position = transform.position;
-                FA.transform.position += (transform.forward) * 1.0f;
+
             }
             if (Item == ItemKindDefinition.RED_SECOND)
             {

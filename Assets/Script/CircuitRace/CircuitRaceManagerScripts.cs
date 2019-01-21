@@ -18,31 +18,35 @@ public class CircuitRaceManagerScripts : MonoBehaviour
 
     public Rigidbody MyCarRigidBody;
 
+    private float rotate = 0;
+
     // Start is called before the first frame update
     void Start()
     {
         var CircuitRaceManager = GameObject.FindWithTag("CircuitRaceManager").GetComponent<CircuitManagerScripts>();
         Instantiate(Map[CircuitRaceManager.MapKind]);
+        if(CircuitRaceManager.MapKind == 1)
+        {
+            rotate = -90.0f;
+        }
 
         GameObject[] StartPositionObject = GameObject.FindGameObjectsWithTag("StartPosition");
-        Player = Instantiate(Car[CircuitRaceManager.CarKind], StartPositionObject[0].transform.position, Quaternion.Euler(0, 0, 0));
+        Player = Instantiate(Car[CircuitRaceManager.CarKind], StartPositionObject[0].transform.position, Quaternion.Euler(0, rotate, 0));
         
-        Player.GetComponentInChildren<ItemUse>().Is_MyCharacter = true;
+        Player.GetComponentInChildren<CharacterMoveAdvanced>().Is_MyCharacter = true;
         MyCarRigidBody = Player.GetComponentInChildren<Rigidbody>();
-        Instantiate(Items[Random.Range(0, Items.Length)], StartPositionObject[0].transform.position + Vector3.forward * 5, Quaternion.Euler(0, 0, 0));
-
         //Camera MinimapCamera = GameObject.FindGameObjectWithTag("MinimapCamera").GetComponent<Camera>();
 
         AI = new GameObject[7];
         for(int i = 0; i < 7; i++)
         {
-            AI[i] = Instantiate(Car[Random.Range(0, Car.Length)], StartPositionObject[i+1].transform.position, Quaternion.Euler(0, 0, 0));
+            AI[i] = Instantiate(Car[Random.Range(0, Car.Length)], StartPositionObject[i+1].transform.position, Quaternion.Euler(0, rotate, 0));
             Camera[] Cam = AI[i].GetComponentsInChildren<Camera>();
             foreach(Camera c in Cam)
             {
                 c.enabled = false;
             }
-            AI[i].GetComponentInChildren<ItemUse>().Is_MyCharacter = false;
+            AI[i].GetComponentInChildren<CharacterMoveAdvanced>().Is_MyCharacter = false;
         }
 
 
@@ -52,7 +56,7 @@ public class CircuitRaceManagerScripts : MonoBehaviour
     void Update()
     {
         // 이 부분이 Niddle 을 조종하는 코드입니다. 지금은 단순히 회전만 합니다. 실제 rigid body를 움직이는것처럼 해주세요!
-        float velocity = MyCarRigidBody.velocity.sqrMagnitude;
-        Niddle.transform.Rotate(0.0f, 0.0f, -velocity * 0.5f);
+        //float velocity = MyCarRigidBody.velocity.sqrMagnitude;
+        //Niddle.transform.Rotate(0.0f, 0.0f, -velocity * 0.5f);
     }
 }

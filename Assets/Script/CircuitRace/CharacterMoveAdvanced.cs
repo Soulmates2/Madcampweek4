@@ -30,17 +30,21 @@ public class CharacterMoveAdvanced : MonoBehaviour
     public Transform RBackPosition;
 
     // Start is called before the first frame update
-
+    
 
     public List<AxleInfo> axleInfos; // the information about each individual axle
     public float maxMotorTorque; // maximum torque the motor can apply to wheel
     public float maxSteeringAngle; // maximum steer angle the wheel can have
 
+    public AudioClip[] EffectSound;
+    public AudioSource audioSource;
+
     void Start()
     {
+        //AudioListener = MenuBackGroundMusicScript.instance;
         //ItemBox = GameObject.FindGameObjectWithTag("Item").GetComponent<Image>();
         //Sphere = GameObject.Find("Sphere");
-        foreach(AxleInfo axleInfo in axleInfos)
+        foreach (AxleInfo axleInfo in axleInfos)
         {
 
         }
@@ -88,7 +92,6 @@ public class CharacterMoveAdvanced : MonoBehaviour
         
         if (Is_MyCharacter)
         {
-
             //Debug.Log(PlayerRigidBody.velocity.sqrMagnitude);
 
             float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
@@ -125,6 +128,22 @@ public class CharacterMoveAdvanced : MonoBehaviour
                     //axleInfo.rightWheel.motorTorque = 20 * maxMotorTorque;
                     PlayerRigidBody.velocity -= PlayerRigidBody.gameObject.transform.forward * 0.15f;
                 }
+            }
+
+            if(PlayerRigidBody.velocity.sqrMagnitude > 5.0f)
+            {
+                if (!audioSource.isPlaying)
+                {
+                    audioSource = GetComponent<AudioSource>();
+                    audioSource.clip = EffectSound[0];
+                    audioSource.mute = false;
+                    audioSource.volume = 0.5f * PlayerPrefs.GetFloat("BGMVolume", 0.1f);
+                    audioSource.Play();
+                }
+            }
+            else
+            {
+                audioSource.Stop();
             }
         }
     }

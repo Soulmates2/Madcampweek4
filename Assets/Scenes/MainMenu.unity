@@ -595,6 +595,14 @@ MonoBehaviour:
   bgm:
   - {fileID: 8300000, guid: 0812c7b5d5d2e6c4fbe5bf84a3b8dfbb, type: 3}
   track_number: 0
+  Gamebgm:
+  - {fileID: 8300000, guid: 48bd0ced2ae7fa4479193061dd6cab13, type: 3}
+  - {fileID: 8300000, guid: 48246c85ab518fd4cb1860675389c11d, type: 3}
+  - {fileID: 8300000, guid: 6bfc2ab8d0934214291a629d34f16787, type: 3}
+  - {fileID: 8300000, guid: d1102edb05e02e2448593556a4df462b, type: 3}
+  - {fileID: 8300000, guid: 6c570f7cec7a89348bf4cf87d9d50008, type: 3}
+  - {fileID: 8300000, guid: 082eacea61d84a543b175f53b057d9b2, type: 3}
+  Gamebgm_track_number: 0
 --- !u!1 &853586901
 GameObject:
   m_ObjectHideFlags: 0

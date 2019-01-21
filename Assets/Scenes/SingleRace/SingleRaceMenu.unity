@@ -122,7 +122,6 @@ GameObject:
   m_Component:
   - component: {fileID: 54432042}
   - component: {fileID: 54432041}
-  - component: {fileID: 54432040}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -130,14 +129,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &54432040
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 54432039}
-  m_Enabled: 1
 --- !u!20 &54432041
 Camera:
   m_ObjectHideFlags: 0
@@ -308,6 +299,7 @@ GameObject:
   m_Component:
   - component: {fileID: 210167704}
   - component: {fileID: 210167705}
+  - component: {fileID: 210167706}
   m_Layer: 0
   m_Name: Cup Race Manager
   m_TagString: CupRaceManager
@@ -349,12 +341,21 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 64168a7973d90a2429cd42eb8d0ef9d6, type: 3}
   - {fileID: 21300000, guid: 41ca987c3286fbb4cb09f03a532fad6a, type: 3}
   CupImageSet:
-  - {fileID: 21300000, guid: 5640ce3d632c3424f9b9ea1c77b10498, type: 3}
-  - {fileID: 21300000, guid: 45ce78dcc25f9f74199599235afb1190, type: 3}
-  - {fileID: 21300000, guid: d54f45def7a00db4191ccd44fd216bc1, type: 3}
   - {fileID: 21300000, guid: 6c92435c61fc06941924f30e44646a5c, type: 3}
   CarKind: 0
   CupKind: 0
+--- !u!114 &210167706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210167703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4e983e6c4c522439829a637e1f9a6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &307644476
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,11 @@ public class CharacterMoveAdvanced : MonoBehaviour
     public int Item = 0;
     public GameObject Sphere;
 
+    public float Half_Accelerate = 2.0f;
+    public float Accelerate = 1.0f;
+    public float HighSpeed = 700.0f;
+    public float BoostingHighSpeed = 900.0f;
+
     private Rigidbody MyCarRigidBody;
     public Image ItemBox;
     // Start is called before the first frame update
@@ -92,9 +97,15 @@ public class CharacterMoveAdvanced : MonoBehaviour
                 {
                     //axleInfo.leftWheel.motorTorque = 20 * maxMotorTorque;
                     //axleInfo.rightWheel.motorTorque = 20 * maxMotorTorque;
-                    if(PlayerRigidBody.velocity.sqrMagnitude < 700.0f)
+                    if (PlayerRigidBody.velocity.sqrMagnitude < HighSpeed/2)
                     {
-                        PlayerRigidBody.velocity += PlayerRigidBody.gameObject.transform.forward * 0.3f;
+                        PlayerRigidBody.velocity += PlayerRigidBody.gameObject.transform.forward * 0.3f * Half_Accelerate;
+                    }else if (PlayerRigidBody.velocity.sqrMagnitude < HighSpeed)
+                    {
+                        PlayerRigidBody.velocity += PlayerRigidBody.gameObject.transform.forward * 0.3f * Accelerate;
+                    }else if(PlayerRigidBody.velocity.sqrMagnitude > HighSpeed + 20.0f)
+                    {
+                        PlayerRigidBody.velocity -= PlayerRigidBody.gameObject.transform.forward * 0.1f;
                     }
                 }
 
@@ -102,10 +113,7 @@ public class CharacterMoveAdvanced : MonoBehaviour
                 {
                     //axleInfo.leftWheel.motorTorque = 20 * maxMotorTorque;
                     //axleInfo.rightWheel.motorTorque = 20 * maxMotorTorque;
-                    if (PlayerRigidBody.velocity.magnitude < 700.0f)
-                    {
-                        PlayerRigidBody.transform.position -= PlayerRigidBody.gameObject.transform.forward * 0.05f;
-                    }
+                    PlayerRigidBody.velocity -= PlayerRigidBody.gameObject.transform.forward * 0.15f;
                 }
             }
         }

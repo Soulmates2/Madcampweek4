@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class updown : MonoBehaviour
+public class downup : MonoBehaviour
 {
-    private int up = 0;
+    private int up = 1;
     // Update is called once per frame
     void Update()
     {

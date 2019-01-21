@@ -22,7 +22,9 @@ public class CharacterMoveAdvanced : MonoBehaviour
 
     private Rigidbody MyCarRigidBody;
     public Image ItemBox;
+    public Transform LShootPosition;
     public Transform ShootPosition;
+    public Transform RShootPosition;
     public Transform LBackPosition;
     public Transform BackPosition;
     public Transform RBackPosition;
@@ -176,6 +178,21 @@ public class CharacterMoveAdvanced : MonoBehaviour
 
             if (Item == ItemKindDefinition.RED_SECOND)
             {
+                BA1 = Instantiate(Sphere);
+                BA1.transform.position = LShootPosition.position;
+                FA = Instantiate(Sphere);
+                FA.transform.position = ShootPosition.position;
+                BA2 = Instantiate(Sphere);
+                BA2.transform.position = RShootPosition.position;
+                Rigidbody RGBD1 = BA1.GetComponent<Rigidbody>();
+                Rigidbody RGBD2 = FA.GetComponent<Rigidbody>();
+                Rigidbody RGBD3 = BA2.GetComponent<Rigidbody>();
+                RGBD1.AddRelativeForce(transform.forward * 200000000 + transform.up * 100000000);
+                RGBD1.AddExplosionForce(100, FA.transform.position, 10);
+                RGBD2.AddRelativeForce(transform.forward * 200000000 + transform.up * 100000000);
+                RGBD2.AddExplosionForce(100, FA.transform.position, 10);
+                RGBD3.AddRelativeForce(transform.forward * 200000000 + transform.up * 100000000);
+                RGBD3.AddExplosionForce(100, FA.transform.position, 10);
                 Item = ItemKindDefinition.NO_ITEM;
             }
 

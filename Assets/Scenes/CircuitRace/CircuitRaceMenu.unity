@@ -164,6 +164,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 41ca987c3286fbb4cb09f03a532fad6a, type: 3}
   MapImageSet:
   - {fileID: 21300000, guid: a8eda277eec2fee4ba29f2cc44bae6ec, type: 3}
+  - {fileID: 21300000, guid: af9286da64b8644418cd9fb7f358377a, type: 3}
   CarKind: 0
   MapKind: 0
 --- !u!1 &160574499

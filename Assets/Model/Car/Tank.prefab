@@ -355,9 +355,9 @@ GameObject:
   - component: {fileID: 6250209459848344088}
   - component: {fileID: 5380963165177069108}
   - component: {fileID: 7452508809476747679}
-  - component: {fileID: 4130125413672246104}
   - component: {fileID: 6284811056952179164}
   - component: {fileID: 2242352288124268611}
+  - component: {fileID: 8713937910089623928}
   m_Layer: 0
   m_Name: Stryker
   m_TagString: Player
@@ -496,19 +496,6 @@ MonoBehaviour:
     steering: 0
   maxMotorTorque: 400
   maxSteeringAngle: 20
---- !u!65 &4130125413672246104
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 938851664837339081}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.8, y: 2.7, z: 7.2}
-  m_Center: {x: 0.1, y: 1.5, z: 0}
 --- !u!54 &6284811056952179164
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -541,6 +528,20 @@ MonoBehaviour:
   CurrentLapTime: {fileID: 0}
   LastLapTime: {fileID: 0}
   BestLapTime: {fileID: 0}
+--- !u!136 &8713937910089623928
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938851664837339081}
+  m_Material: {fileID: 13400000, guid: e1054f9a4725354448dfd14c09d949ad, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.3
+  m_Height: 7.5
+  m_Direction: 2
+  m_Center: {x: 0, y: 2, z: -0.040872335}
 --- !u!1 &1190534954687750416
 GameObject:
   m_ObjectHideFlags: 0

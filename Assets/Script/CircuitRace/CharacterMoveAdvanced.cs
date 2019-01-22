@@ -22,6 +22,7 @@ public class CharacterMoveAdvanced : MonoBehaviour
 
     private Rigidbody MyCarRigidBody;
     public Image ItemBox;
+    public Sprite[] ItemImage;
     public Transform LShootPosition;
     public Transform ShootPosition;
     public Transform RShootPosition;
@@ -42,7 +43,7 @@ public class CharacterMoveAdvanced : MonoBehaviour
     void Start()
     {
         //AudioListener = MenuBackGroundMusicScript.instance;
-        //ItemBox = GameObject.FindGameObjectWithTag("Item").GetComponent<Image>();
+        ItemBox = GameObject.FindGameObjectWithTag("ItemBox").GetComponent<Image>();
         //Sphere = GameObject.Find("Sphere");
         foreach (AxleInfo axleInfo in axleInfos)
         {
@@ -259,6 +260,9 @@ public class CharacterMoveAdvanced : MonoBehaviour
                 RGBD3.AddExplosionForce(100, FA.transform.position, 10);
                 Item = ItemKindDefinition.NO_ITEM;
             }
+
+            ItemBox.sprite = null;
+
         }
 
     }
@@ -284,14 +288,17 @@ public class CharacterMoveAdvanced : MonoBehaviour
                 if (Item == ItemKindDefinition.BLUE_FIRST)
                 {
                     Item = ItemKindDefinition.BLUE_SECOND;
+                    ItemBox.sprite = ItemImage[5];
                 }
                 else if (Item == ItemKindDefinition.BLUE_SECOND)
                 {
                     Item = ItemKindDefinition.BLUE_SECOND;
+                    ItemBox.sprite = ItemImage[5];
                 }
                 else
                 {
                     Item = ItemKindDefinition.BLUE_FIRST;
+                    ItemBox.sprite = ItemImage[4];
                 }
             }
             if (collision.gameObject.GetComponent<TypeScript>().GetTypeScript().Equals("Red Item"))
@@ -300,14 +307,18 @@ public class CharacterMoveAdvanced : MonoBehaviour
                 if (Item == ItemKindDefinition.RED_FIRST)
                 {
                     Item = ItemKindDefinition.RED_SECOND;
+                    ItemBox.sprite = ItemImage[1];
+
                 }
                 else if (Item == ItemKindDefinition.RED_SECOND)
                 {
                     Item = ItemKindDefinition.RED_SECOND;
+                    ItemBox.sprite = ItemImage[1];
                 }
                 else
                 {
                     Item = ItemKindDefinition.RED_FIRST;
+                    ItemBox.sprite = ItemImage[0];
                 }
             }
             if (collision.gameObject.GetComponent<TypeScript>().GetTypeScript().Equals("Yellow Item"))
@@ -316,14 +327,17 @@ public class CharacterMoveAdvanced : MonoBehaviour
                 if (Item == ItemKindDefinition.YELLOW_FIRST)
                 {
                     Item = ItemKindDefinition.YELLOW_SECOND;
+                    ItemBox.sprite = ItemImage[7];
                 }
                 else if (Item == ItemKindDefinition.YELLOW_SECOND)
                 {
                     Item = ItemKindDefinition.YELLOW_SECOND;
+                    ItemBox.sprite = ItemImage[7];
                 }
                 else
                 {
                     Item = ItemKindDefinition.YELLOW_FIRST;
+                    ItemBox.sprite = ItemImage[6];
                 }
             }
             if (collision.gameObject.GetComponent<TypeScript>().GetTypeScript().Equals("Green Item"))
@@ -332,16 +346,21 @@ public class CharacterMoveAdvanced : MonoBehaviour
                 if (Item == ItemKindDefinition.GREEN_FIRST)
                 {
                     Item = ItemKindDefinition.GREEN_SECOND;
+                    ItemBox.sprite = ItemImage[3];
                 }
                 else if (Item == ItemKindDefinition.GREEN_SECOND)
                 {
                     Item = ItemKindDefinition.GREEN_SECOND;
+                    ItemBox.sprite = ItemImage[3];
                 }
                 else
                 {
                     Item = ItemKindDefinition.GREEN_FIRST;
+                    ItemBox.sprite = ItemImage[2];
                 }
             }
+
+            
         }
 
         // 아이템을 할당하는 코드

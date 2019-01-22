@@ -288,6 +288,15 @@ MonoBehaviour:
   HighSpeed: 700
   BoostingHighSpeed: 900
   ItemBox: {fileID: 0}
+  ItemImage:
+  - {fileID: 21300000, guid: 0be4732d32ecf3e4d8fba2a288b86fa9, type: 3}
+  - {fileID: 21300000, guid: 4bb342146b09ed141886e22875314094, type: 3}
+  - {fileID: 21300000, guid: 328b8fbde26bf0b46baa1003744bb766, type: 3}
+  - {fileID: 21300000, guid: 61b9461ed250f66409e9b7eb86e1c5f6, type: 3}
+  - {fileID: 21300000, guid: 5e285864177377a4ca2740e2bd446289, type: 3}
+  - {fileID: 21300000, guid: dbf518c5aadeef34b8b363bff1c4a051, type: 3}
+  - {fileID: 21300000, guid: f02f1855f85d9aa4a959aa5275028bdc, type: 3}
+  - {fileID: 21300000, guid: 65838c4d123ea8541affcaed261e8e7c, type: 3}
   LShootPosition: {fileID: 1259758373418397991}
   ShootPosition: {fileID: 8459725851600905323}
   RShootPosition: {fileID: 1998390024262523706}

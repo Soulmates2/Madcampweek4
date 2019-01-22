@@ -17,6 +17,7 @@ TagManager:
   - LastLapTime
   - BestLapTime
   - Item
+  - ItemBox
   layers:
   - Default
   - TransparentFX
